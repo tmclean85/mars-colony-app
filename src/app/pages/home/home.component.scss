@@ -17,8 +17,17 @@ html {
 
 // HOME PAGE
 
+.home-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .intro-header-box {
   display: flex;
+  font-family: 'Orbitron', sans serif;
+  font-size: 3rem;
 	height: 5rem;
 	justify-content: center;
 	padding-top: 5rem;
@@ -27,8 +36,15 @@ html {
 }
 
 .enter-button-box {
-    height: 100%;
+    display: flex;
+    width: 96%;
+    height: 36rem;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    a {
+        position: absolute;
+    }
 }
 
 .enter-button {    
@@ -36,10 +52,10 @@ html {
   border: 4px solid #EEF6FA;
   border-radius: 50%;
   display: flex;
-  height: 0.25rem;
+  height: 0.15rem;
   justify-content: center;
   align-items: center;
-  width: 0.25rem;
+  width: 0.15rem;
   margin-bottom: 10rem;
 }
 
