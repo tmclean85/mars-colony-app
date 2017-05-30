@@ -11,7 +11,6 @@ export class EncountersComponent implements OnInit {
     message = "Hello";
     listOfMessages = [
       "Hi",
-      "Hey",
       "Word",
       "Guten tag",
       "Kiddah",
