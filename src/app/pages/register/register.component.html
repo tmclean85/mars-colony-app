@@ -7,11 +7,9 @@
   <form>
     <input name="name" type="text" placeholder="Name"/>
     <input name="number" type="text" placeholder="Age"/>   
-    <select required name="occupation">
-      <option value="hunter">Alien Hunter</option> 
-      <option value="yoga">Yoga Teacher</option> 
-      <option value="endo">Endomorph</option> 
-      <option value="trump">Donald Trump</option> 
-    </select> 
+      <select>
+        <option *ngFor='let job of this.jobs'> {{job.name}}</option>
+      </select>  
+
   </form>  
 </div>  

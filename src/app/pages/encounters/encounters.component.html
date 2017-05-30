@@ -2,18 +2,11 @@
   <h1>RECENT ENCOUNTERS</h1>
   <p>See an alien? Report it!</p>
 </div>  
-{{message}} <!--demo-->
 <div class="encounters-wrapper">
-  <button (click)="stopTheMadness($event)">STOP THE MADNESS</button> <!--demo-->
   <ul>
-    <li *ngFor='let item of listOfMessages'>{{item}} </li> <!--demo-->
-    <li>KILLED ALIUM</li>
-    <li>TALKED TO ALIUM</li>
-    <li>Y THO?</li>
-    <li>TURNS OUT I FW THE ALIUM</li>
+    <li *ngFor='let encounter of this.encounters'>{{encounter.atype}} {{encounter.date}} {{encounter.action}}</li>    
   </ul>  
    <!--demo below-->
-  <div><p *ngIf="listOfMessages.length > 10">the list is too long {{listOfMessages.length}}</p></div>
 </div>  
 <div class="report-button-wrapper">
   <input type="submit" name="Report" />
