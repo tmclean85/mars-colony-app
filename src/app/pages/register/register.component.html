@@ -1,14 +1,22 @@
+<div class="register-wrapper">
 <div class="intro-header-box">
   <header class="page-header">
-    <h1>Register</h1>
+    <h1>.register</h1>
   </header>
 </div>
-<div class="registration-wrapper">
+<div class="registration-form-wrapper">
   <form>
-    <input name="name" type="text" placeholder="Name"/>
-    <input name="number" type="text" placeholder="Age"/>   
-      <select >
-        <option *ngFor='let job of this.jobs'> {{job.name}}</option>
-      </select>  
+    <input class="registration-field" name="name" type="text" placeholder="name"/>
   </form>  
+  <form>  
+    <input class="registration-field" name="number" type="text" placeholder="age"/>  
+  </form>   
+      <select class="registration-dropdown">
+        <option value="placeholder" disabled selected>Select your occupation</option>
+        <option *ngFor='let job of this.jobs' placeholder="Select an Occupation"> {{job.name}}</option>
+      </select>  
+   <div class="buttonwrapper">
+     <button class="submit-button">register</button>
+   </div>     
 </div>  
+</div>
