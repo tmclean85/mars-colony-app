@@ -35,13 +35,20 @@
   height: 2rem;
   font-family: 'Orbitron', sans serif;
   font-size: 1rem;
-  transition: width 0.5s;
+  transition: 0.5s;
   width: 7rem;
 }
 
 .registration-field:hover {
   width: 20rem;
+  background-color: darkred;
+  color: #FFF;
+  transition: 1s;
 }
+
+  .registration-field:hover::placeholder {
+    color: #FFF;
+  }  
 
 .registration-dropdown {
   background-color: lightgray;
@@ -60,4 +67,10 @@
   font-family: 'Orbitron', sans serif;
   width: 6rem;
   height: 1.5rem;
+  transition: 0.5s;
 }
+
+  .submit-button:hover {
+    background-color: darkred;
+    color: #FFF;
+  }
