@@ -1,13 +1,15 @@
-<div class="header-box">  
-  <h1>RECENT ENCOUNTERS</h1>
-  <p>See an alien? Report it!</p>
+<div class="encounters-page-wrapper">
+<div class="intro-header-box">  
+  <h1>encounter.log</h1>
+
 </div>  
 <div class="encounters-wrapper">
   <ul>
-    <li *ngFor='let encounter of this.encounters'>{{encounter.atype}} {{encounter.date}} {{encounter.action}}</li>    
+    <li class="encounter" *ngFor='let encounter of this.encounters'><div class="encounter-date-type"><span class="text-contrast">date:</span> {{encounter.date}} <span class="text-contrast">species:</span> {{encounter.atype}}</div><div class="encounter-details"> details: {{encounter.action}} </div></li>    
   </ul>  
    <!--demo below-->
 </div>  
-<div class="report-button-wrapper">
-  <input type="submit" name="Report" />
-</div>  
+   <div class="buttonwrapper">
+     <button class="submit-button">report encounter</button>
+   </div>    
+</div>
