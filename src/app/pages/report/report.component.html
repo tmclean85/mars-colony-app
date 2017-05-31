@@ -1,9 +1,17 @@
-<div class="header-box">  
-  <h1>RECENT ENCOUNTER</h1>
-  <p>Safety on Mars is your responsibility!</p>
+<div class="report-page-wrapper">
+<div class="intro-header-box">
+  <header class="page-header">
+    <h1>report.encounter</h1>
+  </header>
 </div>
-  <select required name="alien type">
+<div class="report-form-wrapper">
+  <select class="report-dropdown" required name="alien type">
+        <option value="placeholder" disabled selected>Select alien species</option>   
         <option *ngFor='let alien of this.aliens'> {{alien.type}}</option>
   </select>
-  <textarea placeholder="Action Taken"></textarea>
-  <input type="submit" />
+  <textarea class="report-details" placeholder="Details of encounter...."></textarea>
+   <div class="buttonwrapper">
+     <button class="submit-button">register</button>
+   </div>  
+  </div>
+  </div>
