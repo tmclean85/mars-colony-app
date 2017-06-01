@@ -27,6 +27,13 @@
   justify-content: space-around;
 }
 
+.fieldset-sub-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
 .registration-field {
   background-color: lightgray;
   border: 2px solid darkred;
@@ -50,9 +57,6 @@
 .registration-field:hover::placeholder {
   color: #FFF;
 }
-  
-
-
 
 .registration-dropdown {
   background-color: lightgray;

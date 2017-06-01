@@ -1,25 +1,45 @@
-import { Component, 
-         OnInit, 
-         Input, 
-         Output } 
-         from '@angular/core';         
-import { Http,
-         Headers, 
-         RequestOptions, 
-         Response } 
-         from '@angular/http';
-import { FormGroup,
-         FormControl, 
-         FormBuilder, 
-         Validators, 
-         ValidatorFn, 
-         AbstractControl,
-         ReactiveFormsModule }
-         from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output
+}
+  from '@angular/core';
+import {
+  Http,
+  Headers,
+  RequestOptions,
+  Response
+}
+  from '@angular/http';
+
+const cantBe = (value: string): ValidatorFn => {
+  return (control: AbstractControl) => {
+    return control.value === value ? { 'Unacceptable value': value } : null;
+  }
+};
+
+const tooOld = (age: number): ValidatorFn => {
+  return (control: AbstractControl) => {
+    return control.value > age ? { 'Too old for Mars': age } : null;
+  }
+};
+
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ReactiveFormsModule
+}
+  from '@angular/forms';
 import { JobsService } from '../../services/jobs.service';
 import { Job } from '../../models/job';
-import { Colonists } from '../../models/colonists'; 
-import { ColonistService } from '../../services/colonist.service';         
+import { Colonists } from '../../models/colonists';
+import { ColonistService } from '../../services/colonist.service';
+
 
 @Component({
   selector: 'app-register',
@@ -34,32 +54,44 @@ export class RegisterComponent implements OnInit {
   NO_JOB_SELECTED: 'no job';
   constructor(private jobService: JobsService, private colonistService: ColonistService, private formBuilder: FormBuilder) { }
 
-ngOnInit() {
-  this.jobService.getData()
-  .subscribe((data) => {
-    this.jobs = data.jobs;
-//      console.log(this.jobs)
-  });
-  this.registerForm = new FormGroup ({
-    name: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(3)]),
-    age: new FormControl('',  [Validators.required]),
-    job_id: new FormControl(this.NO_JOB_SELECTED, []),
-  });
-};
 
-postColonist(colonists: Colonists) {
-//   const colonistName = ;
-//   const colonistJob = ;
-//   const colonistAge = ;
 
-//   const colonist = new Colonists(this.colonistName, this.colonistAge, this.colonistJob);
-  const colonist = new Colonists("Trevor", "31", 4);
+  ngOnInit() {
+    this.jobService.getData()
+      .subscribe((data) => {
+        this.jobs = data.jobs;
+      });
+    this.registerForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(3)]),
+      age: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      job_id: new FormControl(this.NO_JOB_SELECTED, [cantBe(this.NO_JOB_SELECTED)]),
+    });
+  };
 
-  this.colonistService.postData(colonist)
-                 .subscribe((newColonist) => {                  
-                 console.log(colonist);
-                 });
-  };  
+  postColonist() {
+    const colonistName = this.registerForm.get('name').value;
+    const colonistJob = this.registerForm.get('job_id').value;
+    const colonistAge = this.registerForm.get('age').value;
 
+    const colonist = new Colonists(colonistName, colonistAge, colonistJob);
+
+    this.colonistService.postData(colonist)
+      .subscribe((newColonist) => {
+        console.log(newColonist);
+      });
+  };
+
+  register(e) {
+    e.preventDefault();
+    if (this.registerForm.invalid) {
+      console.log('You done fucked up');
+    } else {
+      const name = this.registerForm.get('name').value;
+      const age = this.registerForm.get('age').value;
+      const job_id = this.registerForm.get('job_id').value;
+      // this.colonist = new Colonists(name, age, job_id);
+      // colonistService.postData( this.COLONIST_URL, {colonist}
+    }
+  }
 
 }

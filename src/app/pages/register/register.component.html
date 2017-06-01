@@ -5,17 +5,19 @@
     </header>
   </div>
   <div class="registration-form-wrapper">
-    <form class="registe-form" [formGroup]="registerForm">
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="register($event)">
       <fieldset>
-        <input class="registration-field" name="name" type="text" placeholder="name" required formControlName="name"/>
-        <input class="registration-field" name="number" type="text" placeholder="age" required formControlName="age"/>
+        <div class="fieldset-sub-wrapper">
+        <input class="registration-field" name="name" type="text" placeholder="name" required formControlName="name" />
+        <input class="registration-field" name="number" type="text" placeholder="age" required formControlName="age" />
         <select class="registration-dropdown" formControlName="job_id" required>
-        <option [value]="NO_JOB_SELECTED">Select your occupation</option>
-        <option *ngFor='let job of this.jobs' placeholder="Select an Occupation" [value]="job.id"> {{job.name}}</option>
+        <option [value]="NO_JOB_SELECTED" type="placeholder">Select your occupation</option>
+        <option *ngFor='let job of this.jobs' [value]="job.id"> {{job.name}}</option>
         </select>
+        </div>
       </fieldset>
       <div class="buttonwrapper">
-        <a> <button (click)="postColonist(this.colonist)" class="submit-button" type="submit">register</button></a>
+        <a><button (click)="postColonist(this.colonist)" class="submit-button" type="submit" [disabled]="registerForm.invalid">register</button></a>
       </div>
     </form>
   </div>
