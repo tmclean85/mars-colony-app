@@ -28,22 +28,22 @@ import { ColonistService } from '../../services/colonist.service';
   providers: [JobsService, ColonistService]
 })
 export class RegisterComponent implements OnInit {
-
   jobs: Job[] = [];
   colonists: Colonists[] = [];
   registerForm: FormGroup;
-  constructor(private jobService: JobsService, private colonistService: ColonistService) { }
+  NO_JOB_SELECTED: 'no job';
+  constructor(private jobService: JobsService, private colonistService: ColonistService, private formBuilder: FormBuilder) { }
 
 ngOnInit() {
-//   this.jobService.getData()
-//   .subscribe((data) => {
-//     this.jobs = data.jobs;
-// //      console.log(this.jobs)
-//   });
-  this.registerForm = new FormGroup({
+  this.jobService.getData()
+  .subscribe((data) => {
+    this.jobs = data.jobs;
+//      console.log(this.jobs)
+  });
+  this.registerForm = new FormGroup ({
     name: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(3)]),
     age: new FormControl('',  [Validators.required]),
-    job_id: new FormControl('', []),
+    job_id: new FormControl(this.NO_JOB_SELECTED, []),
   });
 };
 
