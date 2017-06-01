@@ -1,11 +1,25 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, 
+         OnInit, 
+         Input, 
+         Output } 
+         from '@angular/core';         
+import { Http,
+         Headers, 
+         RequestOptions, 
+         Response } 
+         from '@angular/http';
+import { FormGroup,
+         FormControl, 
+         FormBuilder, 
+         Validators, 
+         ValidatorFn, 
+         AbstractControl,
+         ReactiveFormsModule }
+         from '@angular/forms';
 import { JobsService } from '../../services/jobs.service';
 import { Job } from '../../models/job';
 import { Colonists } from '../../models/colonists'; 
-import { ColonistService } from '../../services/colonist.service';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ColonistService } from '../../services/colonist.service';         
 
 @Component({
   selector: 'app-register',
@@ -17,13 +31,19 @@ export class RegisterComponent implements OnInit {
 
   jobs: Job[] = [];
   colonists: Colonists[] = [];
+  registerForm: FormGroup;
   constructor(private jobService: JobsService, private colonistService: ColonistService) { }
 
 ngOnInit() {
-  this.jobService.getData()
-  .subscribe((data) => {
-    this.jobs = data.jobs;
-//      console.log(this.jobs)
+//   this.jobService.getData()
+//   .subscribe((data) => {
+//     this.jobs = data.jobs;
+// //      console.log(this.jobs)
+//   });
+  this.registerForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(3)]),
+    age: new FormControl('',  [Validators.required]),
+    job_id: new FormControl('', []),
   });
 };
 

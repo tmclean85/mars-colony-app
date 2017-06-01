@@ -5,11 +5,11 @@
     </header>
   </div>
   <div class="registration-form-wrapper">
-    <form class="registe-form" #registerForm="ngForm">
+    <form class="registe-form" [formGroup]="registerForm">
       <fieldset>
-        <input class="registration-field" name="name" type="text" placeholder="name" required />
-        <input class="registration-field" name="number" type="number" placeholder="age" required />
-        <select class="registration-dropdown">
+        <input class="registration-field" name="name" type="text" placeholder="name" required formControlName="name"/>
+        <input class="registration-field" name="number" type="number" placeholder="age" required formControlName="age"/>
+        <select class="registration-dropdown" formControlName="job_id" required>
         <option value="placeholder" disabled selected>Select your occupation</option>
         <option *ngFor='let job of this.jobs' placeholder="Select an Occupation"> {{job.name}}</option>
         </select>
