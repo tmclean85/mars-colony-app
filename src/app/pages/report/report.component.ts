@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AliensService } from '../../services/aliens.service';
 import { Alien } from '../../models/alien';
+import { ColonistService } from '../../services/colonist.service';
+import { ReportsService } from '../../services/reports.service'
+
 
 @Component({
   selector: 'app-report',
@@ -18,8 +21,7 @@ export class ReportComponent implements OnInit {
     this.alienService.getData()
     .subscribe((data) => {
       this.aliens = data.aliens;
-      console.log (this.aliens);
     });
+    console.log(ReportsService);
   }
-
 }

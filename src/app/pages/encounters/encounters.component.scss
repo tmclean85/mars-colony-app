@@ -57,4 +57,12 @@
   width: 10rem;
   height: 2.5rem;
   outline: none;
+  transition: 1s;
 }
+
+  .submit-button:hover {
+    background-color: darkred;
+    color: #FFF;
+  }
+
+

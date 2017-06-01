@@ -1,22 +1,22 @@
 <div class="register-wrapper">
-<div class="intro-header-box">
-  <header class="page-header">
-    <h1>.register</h1>
-  </header>
-</div>
-<div class="registration-form-wrapper">
-  <form>
-    <input class="registration-field" name="name" type="text" placeholder="name"/>
-  </form>  
-  <form>  
-    <input class="registration-field" name="number" type="text" placeholder="age"/>  
-  </form>   
-      <select class="registration-dropdown">
+  <div class="intro-header-box">
+    <header class="page-header">
+      <h1>.register</h1>
+    </header>
+  </div>
+  <div class="registration-form-wrapper">
+    <form>
+      <fieldset>
+        <input class="registration-field" name="name" type="text" placeholder="name" />
+        <input class="registration-field" name="number" type="number" placeholder="age" />
+        <select class="registration-dropdown">
         <option value="placeholder" disabled selected>Select your occupation</option>
         <option *ngFor='let job of this.jobs' placeholder="Select an Occupation"> {{job.name}}</option>
-      </select>  
-   <div class="buttonwrapper">
-    <a href="http://localhost:4200/encounters"> <button class="submit-button">register</button></a>
-   </div>     
-</div>  
+      </select>
+        <div class="buttonwrapper">
+          <a> <button (click)="postColonist(this.colonist)" class="submit-button">register</button></a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </div>

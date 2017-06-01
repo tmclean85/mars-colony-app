@@ -8,5 +8,5 @@ export class Report {
     this.colonist_id = colonistId;
     this.atype = atype;
     this.action = action;
-    }
+    };
 }
