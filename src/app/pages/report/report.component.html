@@ -1,17 +1,21 @@
 <div class="report-page-wrapper">
-<div class="intro-header-box">
-  <header class="page-header">
-    <h1>report.encounter</h1>
-  </header>
-</div>
-<div class="report-form-wrapper">
-  <select class="report-dropdown" required name="alien type">
-        <option value="placeholder" disabled selected>Select alien species</option>   
+  <div class="intro-header-box">
+    <header class="page-header">
+      <h1>report.encounter</h1>
+    </header>
+  </div>
+  <div class="report-form-wrapper">
+    <form class="register-form" [formGroup]="reportForm" (ngSubmit)="report($event)">
+      <fieldset>
+        <select class="report-dropdown" required name="alien type" formControlName="alien">
+        <option value="NO_ALIEN_SELECTED" disabled selected>Select alien species</option>   
         <option *ngFor='let alien of this.aliens'> {{alien.type}}</option>
   </select>
-  <textarea class="report-details" placeholder="Details of encounter...."></textarea>
-   <div class="buttonwrapper">
-     <button class="submit-button">report</button>
-   </div>  
+        <textarea class="report-details" placeholder="Details of encounter...." formControlName="action"></textarea>
+        <div class="buttonwrapper">
+          <button (click)="postReport(this.report)" class="submit-button">report</button>
+        </div>
+      </fieldset>
+    </form>
   </div>
-  </div>
+</div>
