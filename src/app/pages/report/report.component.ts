@@ -71,7 +71,8 @@ export class ReportComponent implements OnInit {
       const date = this.theDate();
       const atype = this.reportForm.get('alien').value;
       const action = this.reportForm.get('action').value;
-      const colonistId = 1744;
+      const colonistId = localStorage.getItem('colonist_id');
+      console.log(colonistId);
       const id = 2;
 
       const theEncounter = new Report(id, date, colonistId, atype, action);

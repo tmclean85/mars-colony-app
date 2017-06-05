@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   jobs: Job[] = [];
   colonists: Colonists[] = [];
   registerForm: FormGroup;
-  NO_JOB_SELECTED: 'Select a job....';
+  NO_JOB_SELECTED: '';
   constructor(private router: Router, private jobService: JobsService, private colonistService: ColonistService, private formBuilder: FormBuilder) { }
 
 
@@ -79,7 +79,9 @@ export class RegisterComponent implements OnInit {
 
     this.colonistService.postData(colonist)
       .subscribe((newColonist) => {
-        console.log(colonist);
+        console.log(newColonist);
+        localStorage.setItem("colonist_id", (newColonist.colonist.id).toString());  
+        
       });
   };
 
