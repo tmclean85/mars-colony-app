@@ -5,7 +5,7 @@
 </div>  
 <div class="encounters-wrapper">
   <ul>
-    <li class="encounter" *ngFor='let encounter of this.encounters'><div class="encounter-date-type"><span class="text-contrast">date:</span> {{encounter.date}} <span class="text-contrast">species:</span> {{encounter.atype}}</div><div class="encounter-details"> details: {{encounter.action}} </div></li>    
+    <li class="encounter" *ngFor='let encounter of this.encounters'><div class="encounter-date-type"><span class="text-contrast">date:</span> {{encounter.date}} <span class="text-contrast">species:</span> {{encounter.atype}} <span class="text-contrast">colonist:</span> {{encounter.colonist_id}} </div><div class="encounter-details">details: {{encounter.action}} </div></li>    
   </ul>  
    <!--demo below-->
 </div>  
