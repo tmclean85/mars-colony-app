@@ -15,6 +15,14 @@
   padding-top: 5rem;
 }
 
+.fieldset-wrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 25rem;
+  justify-content: space-between;
+}
+
 .report-form-wrapper {
   align-items: center;
   background: linear-gradient(to bottom, rgba(125,126,125,0.5) 0%,rgba(14,14,14,0.5) 100%); 

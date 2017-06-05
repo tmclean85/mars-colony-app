@@ -25,6 +25,8 @@ const tooOld = (age: number): ValidatorFn => {
   }
 };
 
+import { Router, RouterModule } from '@angular/router';
+
 import {
   FormGroup,
   FormControl,
@@ -51,8 +53,8 @@ export class RegisterComponent implements OnInit {
   jobs: Job[] = [];
   colonists: Colonists[] = [];
   registerForm: FormGroup;
-  NO_JOB_SELECTED: 'no job';
-  constructor(private jobService: JobsService, private colonistService: ColonistService, private formBuilder: FormBuilder) { }
+  NO_JOB_SELECTED: 'Select a job....';
+  constructor(private router: Router, private jobService: JobsService, private colonistService: ColonistService, private formBuilder: FormBuilder) { }
 
 
 
@@ -77,7 +79,7 @@ export class RegisterComponent implements OnInit {
 
     this.colonistService.postData(colonist)
       .subscribe((newColonist) => {
-        console.log(newColonist);
+        console.log(colonist);
       });
   };
 
@@ -89,6 +91,8 @@ export class RegisterComponent implements OnInit {
       const name = this.registerForm.get('name').value;
       const age = this.registerForm.get('age').value;
       const job_id = this.registerForm.get('job_id').value;
+      this.router.navigate(['/encounters']);          
+      
     }
   }
 

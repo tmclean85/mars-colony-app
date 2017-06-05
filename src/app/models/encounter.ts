@@ -5,3 +5,4 @@ export interface Encounter {
   atype: string;
   action: string;
 }
+

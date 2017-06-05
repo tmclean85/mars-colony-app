@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NewEncounter } from '../../models/new-encounter';
+import { Router, RouterModule } from '@angular/router';
 import { Encounter } from '../../models/encounter';
 import { EncountersService } from '../../services/encounters.service';
 import { AliensService } from '../../services/aliens.service';
@@ -8,8 +9,8 @@ import { ColonistService } from '../../services/colonist.service';
 import { ReportsService } from '../../services/reports.service';
 import { Job } from '../../models/job';
 import { Colonists } from '../../models/colonists';
-import { Report } from '../../models/report';
 import { JobsService } from '../../services/jobs.service';
+import { Report } from '../../models/report';
 import { RegisterComponent } from '../register/register.component';
 import {
   FormGroup,
@@ -32,15 +33,16 @@ const cantBe = (value: string): ValidatorFn => {
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss'],
-  providers: [AliensService, JobsService, ReportsService, ColonistService, RegisterComponent]
+  providers: [AliensService, JobsService, ReportsService, ColonistService, RegisterComponent, EncountersService]
 })
 export class ReportComponent implements OnInit {
 
   aliens: Alien[] = [];
+  date: Date;
   reportForm: FormGroup;
-  NO_ALIEN_SELECTED: 'no alien';
+  NO_ALIEN_SELECTED: 'Select an alien...';
 
-  constructor(private alienService: AliensService, private reportService: ReportsService, private colonistService: ColonistService, registry: RegisterComponent, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private alienService: AliensService, private reportService: ReportsService, private colonistService: ColonistService, private encountersService: EncountersService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.alienService.getData()
@@ -54,25 +56,31 @@ export class ReportComponent implements OnInit {
     });
   };
 
-  postReport() {
-    const reportAlien = this.reportForm.get('alien').value;
-    const reportAction = this.reportForm.get('action').value;
-  };
-
   theDate() {
     const date = new Date();
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   };
 
+
+
   report(e) {
     e.preventDefault();
     if (this.reportForm.invalid) {
-      console.log('You fucked up son');
+      alert('Please select an alien and describe your encounter...');
     } else {
-      const alien = this.reportForm.get('alien').value;
-      const action = this.reportForm.get('action').value;
       const date = this.theDate();
-      console.log(alien, action, date);
+      const atype = this.reportForm.get('alien').value;
+      const action = this.reportForm.get('action').value;
+      const colonistId = 1744;
+      const id = 2;
+
+      const theEncounter = new Report(id, date, colonistId, atype, action);
+      this.reportService.postData(theEncounter)
+        .subscribe((newReport) => {
+          console.log(newReport);
+          this.router.navigate(['/encounters']);          
+        });
     }
-  };
-}
+  }
+};
+

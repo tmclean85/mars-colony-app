@@ -1,9 +1,11 @@
 export class Report {
-  id: string;
-  colonist_id: string;
+  id: number;  
+  date: string;
+  colonist_id: number;
   atype: string;
   action: string;
-  constructor(id, colonistId, atype, action) {
+  constructor(id, date, colonistId, atype, action) {
+    this.date = date;
     this.id = id;
     this.colonist_id = colonistId;
     this.atype = atype;

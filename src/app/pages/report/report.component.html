@@ -7,13 +7,15 @@
   <div class="report-form-wrapper">
     <form class="register-form" [formGroup]="reportForm" (ngSubmit)="report($event)">
       <fieldset>
-        <select class="report-dropdown" required name="alien type" formControlName="alien">
-        <option value="NO_ALIEN_SELECTED" disabled selected>Select alien species</option>   
-        <option *ngFor='let alien of this.aliens'> {{alien.type}}</option>
-  </select>
-        <textarea class="report-details" placeholder="Details of encounter...." formControlName="action"></textarea>
-        <div class="buttonwrapper">
-          <button (click)="postReport(this.report)" class="submit-button">report</button>
+        <div class="fieldset-wrapper">
+          <select class="report-dropdown" required name="alien type" formControlName="alien">
+            <option value="NO_ALIEN_SELECTED" disabled selected>Select alien species</option>   
+            <option *ngFor='let alien of this.aliens'> {{alien.type}}</option>
+           </select>
+          <textarea class="report-details" placeholder="Details of encounter...." formControlName="action"></textarea>
+          <div class="buttonwrapper">
+            <button [disabled]="reportForm.invalid" type="submit" class="submit-button">report</button>
+          </div>
         </div>
       </fieldset>
     </form>
