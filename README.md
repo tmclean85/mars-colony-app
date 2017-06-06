@@ -1,5 +1,15 @@
 # MarsColonyApp
 
+Join the most exciting endeavour in human history and sign up as a colonist on Mars!
+
+Register your name, age, and occupation. You will then have access to our database of alien encounters, and the ability to report your own!
+
+# Key Learnings
+
+-Angular JS syntax and operations
+-Angular routerLink service
+-GET/POST database requests
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
 
 ## Development server
