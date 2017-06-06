@@ -5,6 +5,19 @@ import {
   Output
 }
   from '@angular/core';
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   Http,
   Headers,
@@ -47,7 +60,27 @@ import { ColonistService } from '../../services/colonist.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [JobsService, ColonistService]
+  providers: [JobsService, ColonistService],
+
+animations: [
+  trigger('flyInOut', [
+    state('in', style({opacity: 1, transform: 'translateX(0)'})),
+    transition('void => *', [
+      style({
+        opacity: 0,
+        transform: 'translateX(-100%)'
+      }),
+      animate('0.2s ease-in')
+    ]),
+    transition('* => void', [
+      animate('0.2s 10 ease-out', style({
+        opacity: 0,
+        transform: 'translateX(100%)'
+      }))
+    ])
+  ])
+]
+
 })
 export class RegisterComponent implements OnInit {
   jobs: Job[] = [];
@@ -88,7 +121,7 @@ export class RegisterComponent implements OnInit {
   register(e) {
     e.preventDefault();
     if (this.registerForm.invalid) {
-      console.log('You done fucked up');
+      alert('Please enter your name, age, and occupation, Colonist!');
     } else {
       const name = this.registerForm.get('name').value;
       const age = this.registerForm.get('age').value;

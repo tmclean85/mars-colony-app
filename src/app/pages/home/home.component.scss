@@ -41,51 +41,44 @@ html {
   justify-content: center;
 }
 
-.spinner {
-  margin: 100px auto;
-  width: 40px;
-  height: 40px;
+.enter-button-box {
+  display: flex;
+  width: 96%;
+  height: 20rem;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  text-align: center;
-  
-  -webkit-animation: rotate 1s infinite linear;
-  animation: rotate 1s infinite linear;
 }
 
-.dot1, .dot2 {
-  width: 60%;
-  height: 60%;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  background-color: #FFF;
-  border-radius: 100%;
-  
-  -webkit-animation: bounce 2.0s infinite ease-in-out;
-  animation: bounce 2.0s infinite ease-in-out;
+.enter-button {    
+  animation: border-pulsate 2s infinite;    
+  border: 6px solid #EEF6FA;
+  border-radius: 50%;
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
 }
 
-.dot2 {
-  top: auto;
-  bottom: 0;
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+@keyframes border-pulsate {
+0% {
+    box-shadow: 0 0 0 1rem rgba(255,255,255,.1), 0 0 0 2rem rgba(255,255,255,.15), 0 0 0 3rem rgba(255,255,255,.2);
 }
-
-@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
-
-@-webkit-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+15% {
+    box-shadow: 0 0 0 1.8rem rgba(255,255,255,.1), 0 0 0 2.2rem rgba(255,255,255,.13), 0 0 0 3.25rem rgba(255,255,255,.15);    
 }
-
-@keyframes bounce {
-  0%, 100% { 
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+25% {
+    box-shadow: 0 0 0 1.15rem rgba(255,255,255,.1), 0 0 0 2.4rem rgba(255,255,255,.12), 0 0 0 3.5rem rgba(255,255,255,.1);
+}
+50% {
+    box-shadow: 0 0 0 1.25rem rgba(255,255,255,.1), 0 0 0 2.75rem rgba(255,255,255,.1), 0 0 0 4rem rgba(255,255,255,0);
+}
+75% {
+    box-shadow: 0 0 0 1.5rem rgba(255,255,255,.1), 0 0 0 3rem rgba(255,255,255,0), 0 0 0 5rem rgba(255,255,255,0);
+}
+100% {
+    box-shadow: 0 0 0 1.75rem rgba(255,255,255,0), 0 0 0 3.75rem rgba(255,255,255,0), 0 0 0 6rem rgba(255,255,255,0);
+}
 }

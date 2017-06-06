@@ -77,12 +77,17 @@
     color: #FFF;
   }
 
+  fieldset {
+    width: 90%;
+  }
+
   .fieldset-sub-wrapper {
     align-items: center;    
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     height: 15rem;
+    width: 45rem;
   }
 
   .buttonwrapper {
@@ -93,3 +98,12 @@
       margin-top: 2rem;
     }
   }
+
+.form-feedback-box {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  font-family: 'Orbitron', sans serif;  
+  align-items: center;
+  width: 100%;
+}  
