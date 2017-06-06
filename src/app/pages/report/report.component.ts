@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NewEncounter } from '../../models/new-encounter';
 import { Router, RouterModule } from '@angular/router';
 import { Encounter } from '../../models/encounter';
 import { EncountersService } from '../../services/encounters.service';

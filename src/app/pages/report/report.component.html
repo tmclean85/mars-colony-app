@@ -8,8 +8,9 @@
     <form class="register-form" [formGroup]="reportForm" (ngSubmit)="report($event)">
       <fieldset>
         <div class="fieldset-wrapper">
+          <p>&#8595; Select alien species encountered &#8595;</p>
           <select class="report-dropdown" required name="alien type" formControlName="alien">
-            <option value="NO_ALIEN_SELECTED" disabled selected>Select alien species</option>   
+            <option value="placeholder" disabled selected>Select alien species</option>   
             <option *ngFor='let alien of this.aliens'> {{alien.type}}</option>
            </select>
           <textarea class="report-details" placeholder="Details of encounter...." formControlName="action"></textarea>
